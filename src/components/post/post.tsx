@@ -1,11 +1,11 @@
 "use client";
 
 import { ComponentProps, createContext, ElementRef, forwardRef, ReactNode, useContext } from "react";
-import dayjs from 'dayjs'
 import { cn } from "@/lib/utils";
 import { Badge, BadgeProps } from "../ui/badge";
 import Icon, { IconProps } from "../icon";
 import Image from "next/image";
+import dayjs from '@/lib/dayjs';
 
 interface BaseInterface {
     children: ReactNode
@@ -59,7 +59,7 @@ const PostAuthor = ({ name, avatar, publishedAt }: AuthorInterface) => {
             <Image className="w-12 h-12" width={200} height={200} src={avatar} alt={name} />
             <div className="flex flex-col">
                 <span className="font-semibold">{name}</span>
-                <span>{dayjs(publishedAt).format("ddd M, YYYY")}</span>
+                <span>{dayjs(publishedAt).format("LL")}</span>
             </div>
         </div>
     )
