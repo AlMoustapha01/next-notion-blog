@@ -6,6 +6,7 @@ import { Badge, BadgeProps } from "../ui/badge";
 import Icon, { IconProps } from "../icon";
 import Image from "next/image";
 import dayjs from '@/lib/dayjs';
+import Link from "next/link";
 
 interface BaseInterface {
     children: ReactNode
@@ -16,7 +17,9 @@ interface AuthorInterface {
     publishedAt: string;
 }
 
-interface PostInterface extends BaseInterface { }
+interface PostInterface extends BaseInterface {
+    link: string;
+}
 
 namespace Heading1 {
     export type Ref = ElementRef<"h1">;
@@ -44,10 +47,14 @@ namespace PostStatInterface {
     };
 }
 
-const Post = ({ children }: PostInterface) => {
-    return <div className="p-4 rounded-lg shadow-md">
-        {children}
-    </div>
+const Post = ({ children, link }: PostInterface) => {
+    return (
+        <Link href={link}>
+            <div className="p-4 rounded-lg shadow-md">
+                {children}
+            </div>
+        </Link>
+    )
 }
 
 Post.displayName = "Post";
